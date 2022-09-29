@@ -6,8 +6,10 @@
 // let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\r\n');
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\r\n');
 
-console.log("|\\_/|");
-console.log("|q p|   /}");
-console.log('( 0 )"""\\');
-console.log('|"^"`    |');
-console.log('||_/=\\\\__|');
+
+let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\n')[0].split(" ").map(Number);
+// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\n')[0].split(" ").map(Number);
+
+if(input[0]==0 && input[1]<45) console.log("23",(60-(45-input[1])));
+else if (input[1]<45) console.log(input[0]-1,(60-(45-input[1])));
+else console.log(input[0],(input[1]-45));
