@@ -6,24 +6,25 @@
 // let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\r\n');
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\r\n');
 
-let input = require("fs").readFileSync(__dirname + "/input.txt", { encoding: "utf-8" }).split("\n");
+// let input = require("fs").readFileSync(__dirname + "/input.txt", { encoding: "utf-8" }).split("\n");
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\n');
 
-const cnt = Number(input[0]);
-let answer = "";
 
-for (let i = 1; i <= cnt; i++) {
-  let score = 0;
-  let plus = 1;
-  input[i].split('').map((input)=>{
-    if (input=="O") {
-      score += plus;
-      plus++;
-    } else {
-      plus = 1;
+
+function createNumber(){
+  const arr = Array.from({ length: 9999 }, (_, index) => index+1);
+  for (let n = 1; n < 10000; n++){
+    let tmp = n+(""+n).split('').map(Number).reduce((sum,number)=>sum+=number);
+    while(arr.includes(tmp)){
+      arr.splice(arr.indexOf(tmp),1);
     }
-  })
-  answer += score+"\n";
+  }
+  let answer = "";
+  for (let i = 0; i < arr.length; i++){
+    // console.log(arr[i]);
+    answer += arr[i]+"\n";
+  }
+  console.log(answer);
 }
 
-console.log(answer);
+createNumber();
