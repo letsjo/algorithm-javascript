@@ -6,14 +6,9 @@
 // let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\r\n');
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\r\n');
 
-let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\n')[0].split(" ").map(Number);
-// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).trim().split('\n')[0].split(" ").map(Number);
-let count = 0;
-let n = input[0]; //26
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt", { encoding: "utf-8" })
+  .split("\n")[0].split('').reverse().join('').split(' ').map(Number);
+// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split("\n")[0].split('').reverse().join('').split(' ').map(Number);
 
-do{
-  n = (n%10)*10 + (parseInt(n/10) + n%10)%10
-  count++
-} while(n!==input[0])
-
-console.log(count);
+console.log(Math.max(...input));

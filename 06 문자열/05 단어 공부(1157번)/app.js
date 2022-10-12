@@ -6,14 +6,28 @@
 // let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\r\n');
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\r\n');
 
-let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\n')[0].split(" ").map(Number);
-// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).trim().split('\n')[0].split(" ").map(Number);
-let count = 0;
-let n = input[0]; //26
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt", { encoding: "utf-8" })
+  .split("\n")[0].split('').map(a=>a.toUpperCase());
+// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\n')[0].split('').map(a=>a.toUpperCase());
 
-do{
-  n = (n%10)*10 + (parseInt(n/10) + n%10)%10
-  count++
-} while(n!==input[0])
+const result = input.reduce((accu, curr) => { 
+  accu[curr] = (accu[curr] || 0)+1;
+  return accu;
+}, {});
 
-console.log(count);
+let maxCount = 0;
+let maxLetter= "";
+
+for(const [key, val] of Object.entries(result)){
+  if (maxCount < val){
+    maxLetter = key;
+    maxCount = val;
+  } else if (maxCount == val){
+    maxLetter = "?";
+  }
+}
+
+console.log(maxLetter);
+
+

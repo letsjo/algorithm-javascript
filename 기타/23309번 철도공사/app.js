@@ -33,7 +33,7 @@ for (let i = 2; i < info[1]+2; i++){
   } else if(construction[0]=="CP"){
     let findIdx = station.indexOf(construction[1]);
     answer += station[findIdx+1]+"\n";
-    station.splice(findIdx-1,0);
+    station.splice(findIdx-1,0);  
   } else {
     let findIdx = station.indexOf(construction[1]);
     answer += station[findIdx==0?station.length:findIdx-1]+"\n";

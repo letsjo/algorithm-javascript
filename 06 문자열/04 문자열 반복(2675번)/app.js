@@ -6,14 +6,18 @@
 // let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\r\n');
 // let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\r\n');
 
-let input = require('fs').readFileSync(__dirname + '/input.txt',{encoding:"utf-8"}).split('\n')[0].split(" ").map(Number);
-// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).trim().split('\n')[0].split(" ").map(Number);
-let count = 0;
-let n = input[0]; //26
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt", { encoding: "utf-8" })
+  .split("\n");
+// let input = require('fs').readFileSync(0,{encoding:"utf-8"}).split('\n');
+let answer = "";
+let line = Number(input[0]);
 
-do{
-  n = (n%10)*10 + (parseInt(n/10) + n%10)%10
-  count++
-} while(n!==input[0])
-
-console.log(count);
+for (let i = 1; i <= line; i++) {
+  let lineInfo = input[i].trim().split(' ');
+  for (let j = 0; j < lineInfo[1].length; j++){
+    answer += lineInfo[1][j].repeat(lineInfo[0]);
+  }
+  answer += "\n";
+}
+console.log(answer);
