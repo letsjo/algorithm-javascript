@@ -13,11 +13,6 @@ let words = input.slice(1, N + 1);
 let answer = 0;
 let alphabet = new Array(26).fill(0);
 
-if (K < 5) {
-  console.log(0);
-  return;
-}
-
 alphabet[0] = 1;
 alphabet[2] = 1;
 alphabet[8] = 1;
