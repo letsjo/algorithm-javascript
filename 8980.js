@@ -10,17 +10,14 @@ let input = require('fs')
 
 let [n, c] = input[0].split(' ').map((v) => Number(v));
 let m = Number(input[1]);
-let arr = [];
+let arr = input.slice(2).map((v) => v.split(' ').map((v) => Number(v)));
 let answer = 0;
-
-for (let i = 2; i < m + 2; i++) {
-  arr.push(input[i].split(' ').map((v) => Number(v)));
-}
 
 arr.sort((a, b) => {
   if (a[1] === b[1]) {
     return a[0] - b[0];
   }
+
   return a[1] - b[1];
 });
 
