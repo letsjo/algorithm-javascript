@@ -15,6 +15,7 @@ const numbers = input[1].split(' ').map(Number);
 
 const dp = Array.from(Array(n), () => new Array(2).fill(0));
 // const dp = Array(n).fill([0, 0]);
+// [0,0] 똑같은 메모리의 배열값이 채워지기 때문에 밑에서 다 같이 바뀌는 현상이 생긴다.
 
 dp[0][0] = numbers[0];
 dp[0][1] = numbers[0];
