@@ -13,22 +13,29 @@ let input = require('fs')
 const n = Number(input.shift());
 const [width, height] = input.shift().split(' ').map(Number);
 
-const points = new Set();
+const pointList = [];
+const points = new Map();
 
 let count = 0;
 
 for (let i = 0; i < n; i++) {
   const [x, y] = input[i].split(' ').map(Number);
-  points.add([x, y]);
+
+  pointList.push([x, y]);
+  if (!points.has(x)) {
+    points.set(x, []);
+  }
+
+  points.get(x).push(y);
 }
 
-for (let [x, y] of points) {
-  if (
-    points.has([x + width, y]) &&
-    points.has([x, y + height]) &&
-    points.has([x + width, y + height])
-  ) {
-    count++;
+for (let [x, y] of pointList) {
+  if (points.has(x + width) && points.get(x + width).includes(y)) {
+    if (points.has(x) && points.get(x).includes(y + height)) {
+      if (points.has(x + width) && points.get(x + width).includes(y + height)) {
+        count++;
+      }
+    }
   }
 }
 
