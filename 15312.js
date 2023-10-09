@@ -9,7 +9,7 @@ let input = require('fs')
   .trim()
   .split('\r\n');
 // let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
-const alpha = [3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1];
+const alphabet = [3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1];
 
 const A = input[0];
 const B = input[1];
@@ -18,8 +18,8 @@ let result = [];
 const len = A.length > B.length ? A.length : B.length;
 
 for (let i = 0; i < len; i++) {
-  if (A[i]) result.push(alpha[A.charCodeAt(i) - 65]);
-  if (B[i]) result.push(alpha[B.charCodeAt(i) - 65]);
+  if (A[i]) result.push(alphabet[A.charCodeAt(i) - 65]);
+  if (B[i]) result.push(alphabet[B.charCodeAt(i) - 65]);
 }
 
 while (result.length > 2) {
